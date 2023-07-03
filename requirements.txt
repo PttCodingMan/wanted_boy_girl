@@ -1,1 +1,3 @@
 PyPtt
+sentence-transformers
+matplotlib

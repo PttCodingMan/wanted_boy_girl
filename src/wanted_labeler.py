@@ -47,13 +47,18 @@ if __name__ == '__main__':
             print(analysis_content)
 
             while True:
-                label = input('author is [boy/girl/unknown/pass]').strip()
-                if label not in ['b', 'g', 'u', 'p']:
+                choice = input('author is [boy/girl/unknown/pass/quit]').strip().lower()
+                if choice not in ['b', 'g', 'u', 'p', 'q']:
                     continue
                 break
 
-            if label == 'p':
-                continue
+            match choice:
+                case 'q':
+                    break
+                case 'p':
+                    continue
+                case _:
+                    pass
 
             with open(f'../data/data.json', 'a') as f:
                 f.write(json.dumps({
@@ -61,7 +66,7 @@ if __name__ == '__main__':
                     'title': post['title'],
                     'content': post['content'].strip(),
                     'aid': post['aid'],
-                    'label': label
+                    'label': choice
                 }, ensure_ascii=False))
                 f.write('\n')
 
